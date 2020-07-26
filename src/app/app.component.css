@@ -1,6 +1,12 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+}
+
+.item {
+    width: 100%;
+    /*border: 1px solid black;*/
+    align-content: center;
 }

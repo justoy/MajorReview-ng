@@ -1,9 +1,35 @@
-<mat-card>
-    <mat-card-title>作者：{{review.author}}</mat-card-title>
-    <mat-card-content>
-        <p>课程情况： {{review.courses}}</p>
-        <p>升学情况： {{review.academy}}</p>
-        <p>就业情况： {{review.career}}</p>
-        <p>专业介绍： {{review.major}}</p>
-    </mat-card-content>
-</mat-card>
+<table class="table review-item">
+    <thead>
+    <tr>
+        <th>作者</th>
+        <th>课程情况</th>
+        <th>升学情况</th>
+        <th>就业情况</th>
+        <th>专业介绍</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{review.author}}</td>
+            <td>{{review.courses}}</td>
+            <td>{{review.academy}}</td>
+            <td>{{review.career}}</td>
+            <td>{{review.major}}</td>
+        </tr>
+    </tbody>
+<!--    <tr>作者-->
+<!--        <td>{{review.author}}</td>-->
+<!--    </tr>-->
+<!--    <tr>课程情况-->
+<!--        <td>{{review.courses}}</td>-->
+<!--    </tr>-->
+<!--    <tr>升学情况-->
+<!--        <td>{{review.academy}}</td>-->
+<!--    </tr>-->
+<!--    <tr>就业情况-->
+<!--        <td>{{review.career}}</td>-->
+<!--    </tr>-->
+<!--    <tr>专业介绍-->
+<!--        <td>{{review.major}}</td>-->
+<!--    </tr>-->
+</table>

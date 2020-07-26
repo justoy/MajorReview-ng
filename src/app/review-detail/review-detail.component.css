@@ -1,5 +1,16 @@
-mat-card{
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+thead {
+    float: left;
+}
+
+
+thead th {
+    display: block;
+}
+
+tbody {
+    float: right;
+}
+
+tbody td {
+    display: block;
 }

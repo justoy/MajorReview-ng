@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReviewsService} from "./reviews.service";
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import {MatCardModule} from "@angular/material/card";
         MatButtonModule,
         HttpClientModule,
         MatListModule,
-        MatCardModule
+        MatCardModule,
+        MatTableModule
     ],
     providers: [
         ReviewsService,
