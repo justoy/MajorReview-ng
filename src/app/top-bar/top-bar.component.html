@@ -1,33 +1,32 @@
-<div class="container">
-    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-        <mat-form-field class="item">
-            <input type="text"
-                   aria-label="School"
-                   matInput
-                   id="school"
-                   [formControl]="schoolControl"
-                   [matAutocomplete]="autoSchool">
-            <mat-autocomplete #autoSchool="matAutocomplete">
-                <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
-                    {{school}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field class="item">
+        <input type="text"
+               aria-label="School"
+               matInput
+               id="school"
+               [formControl]="schoolControl"
+               [matAutocomplete]="autoSchool">
+        <mat-autocomplete #autoSchool="matAutocomplete">
+            <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
+                {{school}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
 
-        <mat-form-field class="item">
-            <input type="text"
-                   aria-label="Major"
-                   matInput
-                   id="major"
-                   [formControl]="majorControl"
-                   [matAutocomplete]="autoMajor">
-            <mat-autocomplete #autoMajor="matAutocomplete">
-                <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
-                    {{major}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        <button mat-flat-button class="item" type="submit">Search</button>
-    </form>
-</div>
+    <mat-form-field class="item">
+        <input type="text"
+               aria-label="Major"
+               matInput
+               id="major"
+               [formControl]="majorControl"
+               [matAutocomplete]="autoMajor">
+        <mat-autocomplete #autoMajor="matAutocomplete">
+            <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
+                {{major}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <button mat-flat-button class="item" type="submit">Search</button>
+</form>
+
 

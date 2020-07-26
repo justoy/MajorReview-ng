@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
 import {ReviewsService} from "../reviews.service";
+import {environment} from "../../environments/environment";
 
 @Component({
     selector: 'app-top-bar',
@@ -23,8 +24,8 @@ export class TopBarComponent implements OnInit {
     constructor(private formBuilder: FormBuilder, private reviewsService: ReviewsService) {
         this.schools = SCHOOLS;
         this.majors = MAJORS;
-        this.schoolControl = new FormControl('哈尔滨工业大学', [Validators.required]);
-        this.majorControl = new FormControl("焊接技术与工程", [Validators.required]);
+        this.schoolControl = new FormControl(environment.default_school, [Validators.required]);
+        this.majorControl = new FormControl(environment.default_major, [Validators.required]);
         this.formGroup = formBuilder.group(this.majorControl, this.schoolControl);
     }
 

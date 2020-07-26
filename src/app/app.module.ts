@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -14,6 +14,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from '@angular/common/http';
+import {ReviewsService} from "./reviews.service";
+import {MatListModule} from "@angular/material/list";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
     declarations: [
@@ -33,9 +36,19 @@ import {HttpClientModule} from '@angular/common/http';
         FormsModule,
         MatSelectModule,
         MatButtonModule,
-        HttpClientModule
+        HttpClientModule,
+        MatListModule,
+        MatCardModule
     ],
-    providers: [],
+    providers: [
+        ReviewsService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: (reviewService: ReviewsService) => () => reviewService.initReviews(),
+            deps: [ReviewsService],
+            multi: true,
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

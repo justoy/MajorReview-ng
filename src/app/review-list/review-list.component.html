@@ -1,1 +1,5 @@
-<p>review-list works!</p>
+<ul>
+    <mat-list-item *ngFor="let review of reviews | async">
+        <app-review-detail [review]="review"></app-review-detail>
+    </mat-list-item>
+</ul>
