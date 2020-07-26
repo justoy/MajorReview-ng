@@ -1,28 +1,34 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="哈尔滨工业大学"
-               aria-label="School"
-               matInput
-               [formControl]="msFormControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
-                {{school}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="焊接技术与工程"
-               aria-label="String"
-               matInput
-               [formControl]="msFormControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
-                {{major}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+<div class="container">
+    <form (ngSubmit)="onSubmit()">
+        <mat-form-field class="item">
+            <input type="text"
+                   aria-label="School"
+                   matInput
+                   id="school"
+                   [formControl]="schoolControl"
+                   [matAutocomplete]="autoSchool">
+            <mat-autocomplete #autoSchool="matAutocomplete">
+                <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
+                    {{school}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="item">
+            <input type="text"
+                   aria-label="Major"
+                   matInput
+                   id="major"
+                   [formControl]="majorControl"
+                   [matAutocomplete]="autoMajor">
+            <mat-autocomplete #autoMajor="matAutocomplete">
+                <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
+                    {{major}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+
+    <button mat-flat-button class="item" type="submit">Search</button>
+</div>
+
