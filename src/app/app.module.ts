@@ -11,7 +11,6 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from '@angular/common/http';
 import {ReviewsService} from "./reviews.service";
@@ -35,7 +34,6 @@ import {MatTableModule} from "@angular/material/table";
         MatAutocompleteModule,
         ReactiveFormsModule,
         FormsModule,
-        MatSelectModule,
         MatButtonModule,
         HttpClientModule,
         MatListModule,
