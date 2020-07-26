@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {SCHOOLS} from "../../assets/schools";
 import {MAJORS} from "../../assets/majors";
-import {Form, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
+import {ReviewsService} from "../reviews.service";
 
 @Component({
     selector: 'app-top-bar',
@@ -19,7 +20,7 @@ export class TopBarComponent implements OnInit {
     filteredSchools: Observable<string[]>;
     filteredMajors: Observable<string[]>;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder, private reviewsService: ReviewsService) {
         this.schools = SCHOOLS;
         this.majors = MAJORS;
         this.schoolControl = new FormControl('哈尔滨工业大学', [Validators.required]);
@@ -42,7 +43,14 @@ export class TopBarComponent implements OnInit {
     }
 
     onSubmit() {
-
+        const major = this.majorControl.value;
+        const school = this.schoolControl.value
+        console.log(`school is ${school}, major is ${major}`);
+        this.reviewsService.getReviews(school, major).subscribe(
+            data => {
+                console.log(data);
+            }
+        )
     }
 
     private filter(value: string, allValues: string[]): string[] {

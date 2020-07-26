@@ -10,9 +10,10 @@ import {ReviewDetailComponent} from './review-detail/review-detail.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {ReactiveFormsModule, FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,7 @@ import {MatButtonModule} from "@angular/material/button";
         TopBarComponent,
         ReviewFormComponent,
         ReviewListComponent,
-        ReviewDetailComponent
+        ReviewDetailComponent,
     ],
     imports: [
         BrowserModule,
@@ -32,6 +33,7 @@ import {MatButtonModule} from "@angular/material/button";
         FormsModule,
         MatSelectModule,
         MatButtonModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <mat-form-field class="item">
             <input type="text"
                    aria-label="School"
@@ -27,8 +27,7 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
+        <button mat-flat-button class="item" type="submit">Search</button>
     </form>
-
-    <button mat-flat-button class="item" type="submit">Search</button>
 </div>
 
