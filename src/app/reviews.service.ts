@@ -23,27 +23,35 @@ export class ReviewsService {
 
         return this.http.get<ReviewInterface[]>(environment.review_uri, {params: params,})
             .toPromise()
-            .then(reivews => {
-                    console.log(`reviews is ${JSON.stringify(reivews)}, type is ${typeof reivews}`);
-                    this.reviewSource = new BehaviorSubject<ReviewInterface[]>(reivews);
+            .then(reviews => {
+                    console.log(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
+                    this.reviewSource = new BehaviorSubject<ReviewInterface[]>(reviews);
                     this.currentReviews = this.reviewSource.asObservable();
                 }
             )
     }
 
-    getReviews(school: string, major: string) {
+    fetchReviews(school: string, major: string) {
         const params = {
             school: school,
             major: major,
         }
 
-        return this.http.get<ReviewInterface[]>(environment.review_uri, {
+        this.http.get<ReviewInterface[]>(environment.review_uri, {
             params: params,
-        })
+        }).subscribe(reviews => {
+                console.log(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
+                this.reviewSource.next(reviews);
+            }
+        )
     }
 
-    addReview(school: string, major: string, review: any) {
-
+    addReview(school: string, major: string, review: ReviewInterface): Observable<any> {
+        const params = {
+            school: school,
+            major: major,
+        }
+        return this.http.post<ReviewInterface>(environment.review_uri, review, {params})
     }
 
 }

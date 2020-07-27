@@ -17,6 +17,7 @@ import {ReviewsService} from "./reviews.service";
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
+import { ReviewFormFieldComponent } from './review-form-field/review-form-field.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import {MatTableModule} from "@angular/material/table";
         ReviewFormComponent,
         ReviewListComponent,
         ReviewDetailComponent,
+        ReviewFormFieldComponent,
     ],
     imports: [
         BrowserModule,

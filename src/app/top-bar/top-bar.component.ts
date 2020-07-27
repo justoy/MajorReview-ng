@@ -47,11 +47,7 @@ export class TopBarComponent implements OnInit {
         const major = this.majorControl.value;
         const school = this.schoolControl.value
         console.log(`school is ${school}, major is ${major}`);
-        this.reviewsService.getReviews(school, major).subscribe(
-            data => {
-                console.log(data);
-            }
-        )
+        this.reviewsService.fetchReviews(school, major);
     }
 
     private filter(value: string, allValues: string[]): string[] {

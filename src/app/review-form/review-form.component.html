@@ -1,1 +1,38 @@
-<p>review-form works!</p>
+<form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="author">请填入一个昵称</label>
+        <input class="form-control"
+               id="author"
+               type="text"
+               formControlName="author">
+        <div *ngIf="reviewForm.get('author').invalid && (reviewForm.get('author').dirty || reviewForm.get('author').touched)"
+             class="alert alert-danger">
+            <div *ngIf="reviewForm.get('author').errors.required">
+                请填入一个昵称
+            </div>
+            <div *ngIf="reviewForm.get('author').errors.maxLength">
+                昵称过长
+            </div>
+        </div>
+    </div>
+
+    <app-review-form-field
+            [concept]="'专业'" [reviewControlName]="'major'" [reviewForm]=reviewForm>
+    </app-review-form-field>
+
+    <app-review-form-field
+            [concept]="'就业'" [reviewControlName]="'career'" [reviewForm]=reviewForm>
+    </app-review-form-field>
+
+    <app-review-form-field
+            [concept]="'升造'" [reviewControlName]="'academy'" [reviewForm]=reviewForm>
+    </app-review-form-field>
+
+    <app-review-form-field
+            [concept]="'课程'" [reviewControlName]="'courses'" [reviewForm]=reviewForm>
+    </app-review-form-field>
+
+    <button [disabled]="!reviewForm.valid" class="button btn btn-primary" type="submit">Post</button>
+
+</form>

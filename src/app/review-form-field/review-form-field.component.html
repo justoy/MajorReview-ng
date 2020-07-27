@@ -1,0 +1,17 @@
+<div class="form-group" [formGroup]="reviewForm">
+    <label [for]=reviewControlName>请介绍{{concept}}情况
+        <textarea class="form-control"
+                  [id]=reviewControlName
+                  type="text"
+                  [formControlName]=reviewControlName></textarea>
+    </label>
+    <div *ngIf="reviewForm.get(reviewControlName).invalid && (reviewForm.get(reviewControlName).dirty || reviewForm.get(reviewControlName).touched)"
+         class="alert alert-danger">
+        <div *ngIf="reviewForm.get(reviewControlName).errors.required">
+            请填入{{concept}}介绍
+        </div>
+        <div *ngIf="reviewForm.get(reviewControlName).errors.maxLength">
+            {{concept}}介绍过长
+        </div>
+    </div>
+</div>
