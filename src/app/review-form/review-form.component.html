@@ -1,11 +1,12 @@
+<h2>输入你对该专业的评价</h2>
 <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-        <label for="author">请填入一个昵称</label>
         <input class="form-control"
                id="author"
                type="text"
                formControlName="author">
+        <label for="author">请填入你的昵称</label>
         <div *ngIf="reviewForm.get('author').invalid && (reviewForm.get('author').dirty || reviewForm.get('author').touched)"
              class="alert alert-danger">
             <div *ngIf="reviewForm.get('author').errors.required">
