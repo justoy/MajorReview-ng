@@ -1,10 +1,9 @@
-<div class="form-group" [formGroup]="reviewForm">
-    <label [for]=reviewControlName>请介绍{{concept}}情况
-        <textarea class="form-control"
-                  [id]=reviewControlName
-                  type="text"
-                  [formControlName]=reviewControlName></textarea>
-    </label>
+<div [formGroup]="reviewForm">
+    <label [for]=reviewControlName>请介绍{{concept}}情况</label>
+    <textarea class="form-control form-field"
+              [id]=reviewControlName
+              type="text"
+              [formControlName]=reviewControlName></textarea>
     <div *ngIf="reviewForm.get(reviewControlName).invalid && (reviewForm.get(reviewControlName).dirty || reviewForm.get(reviewControlName).touched)"
          class="alert alert-danger">
         <div *ngIf="reviewForm.get(reviewControlName).errors.required">
