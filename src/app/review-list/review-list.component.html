@@ -1,5 +1,5 @@
-<ul>
-    <mat-list-item *ngFor="let review of reviews | async">
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let review of reviews | async">
         <app-review-detail [review]="review"></app-review-detail>
-    </mat-list-item>
+    </li>
 </ul>
