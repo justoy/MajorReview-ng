@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ReviewsService} from "../reviews.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {environment} from "../../environments/environment";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-review-form',
@@ -9,10 +11,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ReviewFormComponent implements OnInit {
     reviewForm: FormGroup;
-    @Input() school: string;
-    @Input() major: string;
+    school: string;
+    major: string;
 
-    constructor(private reviewsService: ReviewsService, private formBuilder: FormBuilder) {
+    constructor(private reviewsService: ReviewsService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
         this.reviewForm = formBuilder.group({
             author: new FormControl('Anonymous', [
                 Validators.required,
@@ -38,6 +40,10 @@ export class ReviewFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.route.paramMap.subscribe(params => {
+            this.school = params.get('school') || environment.default_school;
+            this.major = params.get('major') || environment.default_major;
+        });
     }
 
     onSubmit() {

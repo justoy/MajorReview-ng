@@ -24,7 +24,7 @@ export class ReviewsService {
         return this.http.get<ReviewInterface[]>(environment.review_uri, {params: params,})
             .toPromise()
             .then(reviews => {
-                    console.log(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
+                    console.debug(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
                     this.reviewSource = new BehaviorSubject<ReviewInterface[]>(reviews);
                     this.currentReviews = this.reviewSource.asObservable();
                 }
@@ -40,7 +40,7 @@ export class ReviewsService {
         this.http.get<ReviewInterface[]>(environment.review_uri, {
             params: params,
         }).subscribe(reviews => {
-                console.log(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
+                console.debug(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
                 this.reviewSource.next(reviews);
             }
         )

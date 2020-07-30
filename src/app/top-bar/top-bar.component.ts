@@ -15,8 +15,6 @@ import {environment} from "../../environments/environment";
 export class TopBarComponent implements OnInit {
     schools;
     majors;
-    current_major: string;
-    current_school: string;
     formGroup: FormGroup;
     schoolControl: FormControl;
     majorControl: FormControl;
@@ -26,8 +24,6 @@ export class TopBarComponent implements OnInit {
     constructor(private formBuilder: FormBuilder, private reviewsService: ReviewsService) {
         this.schools = SCHOOLS;
         this.majors = MAJORS;
-        this.current_major = environment.default_major;
-        this.current_school = environment.default_school;
         this.schoolControl = new FormControl(environment.default_school, [Validators.required]);
         this.majorControl = new FormControl(environment.default_major, [Validators.required]);
         this.formGroup = formBuilder.group(this.majorControl, this.schoolControl);
@@ -45,13 +41,6 @@ export class TopBarComponent implements OnInit {
                 startWith(''),
                 map(school => this.filter(school, this.schools))
             );
-    }
-
-    onSubmit() {
-        this.current_major = this.majorControl.value;
-        this.current_school = this.schoolControl.value
-        console.debug(`school is ${this.current_school}, major is ${this.current_major}`);
-        this.reviewsService.fetchReviews(this.current_school, this.current_major);
     }
 
     private filter(value: string, allValues: string[]): string[] {
