@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
 
+import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AppComponent} from './app.component';
 import {TopBarComponent} from './top-bar/top-bar.component';
 import {ReviewFormComponent} from './review-form/review-form.component';
@@ -17,7 +18,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
 import {ReviewFormFieldComponent} from './review-form-field/review-form-field.component';
-import {RouterModule} from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -30,6 +30,7 @@ import {RouterModule} from "@angular/router";
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
         NoopAnimationsModule,
         MatInputModule,
         MatAutocompleteModule,
@@ -40,11 +41,6 @@ import {RouterModule} from "@angular/router";
         MatListModule,
         MatCardModule,
         MatTableModule,
-        RouterModule.forRoot([
-            {path: '', component: ReviewListComponent},
-            {path: 'reviews/school/:school/major/:major', component: ReviewListComponent},
-            {path: 'write-review/school/:school/major/:major', component: ReviewFormComponent},
-        ]),
     ],
     providers: [
         ReviewsService,
