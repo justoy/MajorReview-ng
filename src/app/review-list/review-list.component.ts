@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ReviewsService} from "../reviews.service";
-import {ReviewInterface} from "../data/ReviewInterface";
+import {ReviewItem} from "../data/ReviewInterface";
 import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {environment} from "../../environments/environment";
@@ -11,7 +11,7 @@ import {environment} from "../../environments/environment";
     styleUrls: ['./review-list.component.css']
 })
 export class ReviewListComponent implements OnInit {
-    reviews: Observable<ReviewInterface[]>;
+    reviews: Observable<ReviewItem[]>;
 
     constructor(private reviewService: ReviewsService, private route: ActivatedRoute) {
         this.reviews = this.reviewService.currentReviews;

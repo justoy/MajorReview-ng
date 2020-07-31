@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from '../environments/environment';
 import {BehaviorSubject, Observable} from "rxjs";
-import {ReviewInterface} from "./data/ReviewInterface";
+import {ReviewInterface, ReviewItem} from "./data/ReviewInterface";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ReviewsService {
-    private reviewSource: BehaviorSubject<ReviewInterface[]>;
-    currentReviews: Observable<ReviewInterface[]>
+    private reviewSource: BehaviorSubject<ReviewItem[]>;
+    currentReviews: Observable<ReviewItem[]>
 
 
     constructor(private http: HttpClient) {
@@ -21,11 +21,11 @@ export class ReviewsService {
             major: environment.default_major,
         }
 
-        return this.http.get<ReviewInterface[]>(environment.review_uri, {params: params,})
+        return this.http.get<ReviewItem[]>(environment.review_uri, {params: params,})
             .toPromise()
             .then(reviews => {
                     console.debug(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
-                    this.reviewSource = new BehaviorSubject<ReviewInterface[]>(reviews);
+                    this.reviewSource = new BehaviorSubject<ReviewItem[]>(reviews.sort(this.compareReview));
                     this.currentReviews = this.reviewSource.asObservable();
                 }
             )
@@ -37,11 +37,11 @@ export class ReviewsService {
             major: major,
         }
 
-        this.http.get<ReviewInterface[]>(environment.review_uri, {
+        this.http.get<ReviewItem[]>(environment.review_uri, {
             params: params,
         }).subscribe(reviews => {
                 console.debug(`reviews is ${JSON.stringify(reviews)}, type is ${typeof reviews}`);
-                this.reviewSource.next(reviews);
+                this.reviewSource.next(reviews.sort(this.compareReview));
             }
         )
     }
@@ -52,6 +52,10 @@ export class ReviewsService {
             major: major,
         }
         return this.http.post<ReviewInterface>(environment.review_uri, review, {params})
+    }
+
+    compareReview(review1: ReviewItem, review2: ReviewItem) {
+        return review2.ts - review1.ts;
     }
 
 }

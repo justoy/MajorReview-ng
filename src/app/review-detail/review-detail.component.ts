@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ReviewInterface} from "../data/ReviewInterface";
+import {ReviewItem} from "../data/ReviewInterface";
 
 @Component({
     selector: 'app-review-detail',
@@ -7,7 +7,7 @@ import {ReviewInterface} from "../data/ReviewInterface";
     styleUrls: ['./review-detail.component.css']
 })
 export class ReviewDetailComponent implements OnInit {
-    @Input() review: ReviewInterface;
+    @Input() review: ReviewItem;
 
     constructor() {
     }
@@ -15,4 +15,7 @@ export class ReviewDetailComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    toLocalDate(timestamp: number) {
+        return new Date(timestamp).toLocaleDateString();
+    }
 }
