@@ -1,42 +1,44 @@
-<form class="search-form" [formGroup]="formGroup">
-    <mat-form-field class="item">
-        <input type="text"
-               aria-label="School"
-               matInput
-               id="school"
-               [formControl]="schoolControl"
-               [matAutocomplete]="autoSchool">
-        <mat-autocomplete #autoSchool="matAutocomplete">
-            <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
-                {{school}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+<nav class="navbar navbar-light bg-light justify-content-between" aria-label="Page navigation">
+    <form class="search-form" [formGroup]="formGroup">
+        <mat-form-field class="item">
+            <input type="text"
+                   aria-label="School"
+                   matInput
+                   id="school"
+                   [formControl]="schoolControl"
+                   [matAutocomplete]="autoSchool">
+            <mat-autocomplete #autoSchool="matAutocomplete">
+                <mat-option *ngFor="let school of filteredSchools | async" [value]="school">
+                    {{school}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
 
-    <mat-form-field class="item">
-        <input type="text"
-               aria-label="Major"
-               matInput
-               id="major"
-               [formControl]="majorControl"
-               [matAutocomplete]="autoMajor">
-        <mat-autocomplete #autoMajor="matAutocomplete">
-            <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
-                {{major}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</form>
+        <mat-form-field class="item">
+            <input type="text"
+                   aria-label="Major"
+                   matInput
+                   id="major"
+                   [formControl]="majorControl"
+                   [matAutocomplete]="autoMajor">
+            <mat-autocomplete #autoMajor="matAutocomplete">
+                <mat-option *ngFor="let major of filteredMajors | async" [value]="major">
+                    {{major}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
 
-<nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
         <li>
-            <a [routerLink]="['/reviews','school', schoolControl.value, 'major', majorControl.value]">
+            <a class="btn btn-outline-info item"
+               [routerLink]="['/reviews','school', schoolControl.value, 'major', majorControl.value]">
                 看评价
             </a>
         </li>
         <li>
-            <a [routerLink]="['/write-review','school', schoolControl.value, 'major', majorControl.value]">
+            <a class="btn btn-outline-info item"
+               [routerLink]="['/write-review','school', schoolControl.value, 'major', majorControl.value]">
                 写评价
             </a>
         </li>
