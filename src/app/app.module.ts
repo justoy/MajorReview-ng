@@ -11,12 +11,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from "@angular/material/input";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from '@angular/common/http';
 import {ReviewsService} from "./reviews.service";
-import {MatListModule} from "@angular/material/list";
-import {MatCardModule} from "@angular/material/card";
-import {MatTableModule} from "@angular/material/table";
 import {ReviewFormFieldComponent} from './review-form-field/review-form-field.component';
 
 @NgModule({
@@ -36,11 +32,7 @@ import {ReviewFormFieldComponent} from './review-form-field/review-form-field.co
         MatAutocompleteModule,
         ReactiveFormsModule,
         FormsModule,
-        MatButtonModule,
         HttpClientModule,
-        MatListModule,
-        MatCardModule,
-        MatTableModule,
     ],
     providers: [
         ReviewsService,
