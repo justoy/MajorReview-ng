@@ -1,6 +1,12 @@
 # MajorReview
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
+学校专业评价网 https://www.schoolmajorreview.xyz 欢迎贡献对各自专业的评价
+
+也欢迎提供建议和代码
+
+本repo包含网站所有前端代码，用angular写成。
+
+后端repo：https://github.com/justoy/MajorReview
 
 ## Development server
 
