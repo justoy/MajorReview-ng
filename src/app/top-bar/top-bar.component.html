@@ -38,6 +38,7 @@
         </li>
         <li>
             <a class="btn btn-outline-info item"
+               [class.disabled]="!schoolControl.value || schoolControl.value.toString().toLowerCase() === 'all'"
                [routerLink]="['/write-review','school', schoolControl.value, 'major', majorControl.value]">
                 写评价
             </a>

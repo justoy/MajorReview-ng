@@ -1,4 +1,5 @@
 export const SCHOOLS = [
+    "ALL",
     "北京大学",
     "中国人民大学",
     "清华大学",
